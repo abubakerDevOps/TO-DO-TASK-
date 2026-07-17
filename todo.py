@@ -28,14 +28,18 @@ def view_task():
 
 
 #function to delete
-def delete_task():
+def del_task():
        print("DELETE Task")
        del_task= input("ENTER THE TASK TO DELETE : ")
-       if del_task in my_task:
-         my_task.remove(del_task)
-         print("TASK DELETED SUCCESSFULLY")
-       else:
-         print("NO SUCH MATCH FOUND!!")  
+       found = False
+       for task in my_task:
+         if del_task.lower() == task.lower():
+          my_task.remove(task)
+          print("TASK DELETED SUCCESSFULLY")
+          found=True
+          break
+       if not found:
+             print("NO SUCH MATCH FOUND!!")  
 
 #function to update
 def update_task():
@@ -59,7 +63,7 @@ def menu(value):
                view_task()
 
             case 3:
-               delete_task()  
+               del_task()  
 
             case 4:
               update_task()
